@@ -22,21 +22,13 @@
     fbq('init', '1120515530323834');
     fbq('track', 'PageView');
 
-    // Registre Lead quando a pessoa realmente demonstrar interesse,
-    // por exemplo, ao enviar o código em uma etapa conectada a esta página.
-    window.registrarLead = function () {
-      fbq('track', 'Lead');
-    };
-
-    // Registre Purchase APENAS após a confirmação de pagamento real.
-    // A sua integração de checkout / servidor deve acionar essa função
-    // quando o pagamento de R$ 30,00 for efetivamente confirmado.
-    window.registrarCompraConfirmada = function () {
-      fbq('track', 'Purchase', {
-        value: 30.00,
-        currency: 'BRL'
-      });
-    };
+    // Esta versão dispara ambos os eventos na abertura da página.
+    // ATENÇÃO: isso registra uma conversão mesmo sem pagamento confirmado.
+    fbq('track', 'Lead');
+    fbq('track', 'Purchase', {
+      value: 30.00,
+      currency: 'BRL'
+    });
   </script>
   <!-- FIM META PIXEL -->
 
@@ -110,7 +102,7 @@
 
   <main class="wrap" aria-label="Confirmação de código">
     <p class="label">SEU CÓDIGO:</p>
-    <div class="code">X915</div>
+    <div class="code">X728</div>
     <p class="instruction">
       ENVIE ESSE CÓDIGO<br>
       PARA CONFIRMAR!

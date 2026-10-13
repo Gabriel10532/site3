@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="color-scheme" content="dark">
+  <title>Confirmação de Código</title>
+  <meta name="description" content="Confirme seu código de acesso.">
+
+  <!-- META PIXEL -->
+  <script>
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '1120515530323834');
+    fbq('track', 'PageView');
+
+    // Registre Lead quando a pessoa realmente demonstrar interesse,
+    // por exemplo, ao enviar o código em uma etapa conectada a esta página.
+    window.registrarLead = function () {
+      fbq('track', 'Lead');
+    };
+
+    // Registre Purchase APENAS após a confirmação de pagamento real.
+    // A sua integração de checkout / servidor deve acionar essa função
+    // quando o pagamento de R$ 30,00 for efetivamente confirmado.
+    window.registrarCompraConfirmada = function () {
+      fbq('track', 'Purchase', {
+        value: 30.00,
+        currency: 'BRL'
+      });
+    };
+  </script>
+  <!-- FIM META PIXEL -->
+
+  <style>
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      width: 100%;
+      min-height: 100%;
+      background: #000;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding:
+        max(24px, env(safe-area-inset-top))
+        max(20px, env(safe-area-inset-right))
+        max(24px, env(safe-area-inset-bottom))
+        max(20px, env(safe-area-inset-left));
+    }
+
+    .wrap { width: min(100%, 460px); text-align: center; }
+
+    .label {
+      margin: 0 0 14px;
+      font-size: clamp(22px, 6vw, 30px);
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+    }
+
+    .code {
+      margin: 0 0 18px;
+      font-size: clamp(56px, 17vw, 88px);
+      line-height: 0.95;
+      font-weight: 950;
+      letter-spacing: 0.04em;
+      color: #ff1f2d;
+      text-shadow: 0 0 24px rgba(255, 31, 45, 0.22);
+    }
+
+    .instruction {
+      margin: 0;
+      font-size: clamp(18px, 4.9vw, 24px);
+      line-height: 1.35;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .divider {
+      width: 46px;
+      height: 2px;
+      margin: 28px auto 0;
+      background: rgba(255,255,255,.18);
+      border-radius: 999px;
+    }
+
+    @media (max-width: 380px) {
+      .wrap { transform: translateY(-2vh); }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="wrap" aria-label="Confirmação de código">
+    <p class="label">SEU CÓDIGO:</p>
+    <div class="code">X915</div>
+    <p class="instruction">
+      ENVIE ESSE CÓDIGO<br>
+      PARA CONFIRMAR!
+    </p>
+    <div class="divider"></div>
+  </main>
+
+  <noscript>
+    <img height="1" width="1" style="display:none" alt=""
+      src="https://www.facebook.com/tr?id=1120515530323834&amp;ev=PageView&amp;noscript=1">
+  </noscript>
+</body>
+</html>
